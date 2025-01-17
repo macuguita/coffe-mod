@@ -10,5 +10,6 @@ object Coffee : ModInitializer {
 
 	override fun onInitialize() {
 		ModItems.registerModItems()
+		ModItems.registerToVanillaItemGroups()
 	}
 }

@@ -3,7 +3,10 @@ package com.macuguita.item
 import com.macuguita.Coffee
 import com.macuguita.item.custom.CoffeeItem
 import com.macuguita.item.custom.SleepTimerCheckerItem
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.item.Item
+import net.minecraft.item.ItemGroups
+import net.minecraft.item.Items
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
@@ -18,6 +21,12 @@ object ModItems {
     }
 
     fun registerModItems() {
-        Coffee.LOGGER.info("Registering mod iitems for " + Coffee.MOD_ID)
+        Coffee.LOGGER.info("Registering mod items for " + Coffee.MOD_ID)
+    }
+
+    fun registerToVanillaItemGroups() {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register { content ->
+            content.addBefore(Items.MUSHROOM_STEW, COFFEE)
+        }
     }
 }
